@@ -1,0 +1,14 @@
+{
+  "pins" : [
+    {
+      "identity" : "vaan-kit",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/vaan-corp/vaan-kit",
+      "state" : {
+        "branch" : "main",
+        "revision" : "7ce8566250902a27243b1c51b64f3cad2870ae4a"
+      }
+    }
+  ],
+  "version" : 2
+}
