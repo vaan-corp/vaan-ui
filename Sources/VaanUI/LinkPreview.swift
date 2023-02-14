@@ -9,8 +9,8 @@ import VaanKit
 
 public enum LinkPreview {
   public struct Info {
-    let title: String
-    var image: ImageRepresentable?
+    public let title: String
+    public var image: ImageRepresentable?
   }
 }
 
