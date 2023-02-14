@@ -5,8 +5,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/vaan-corp/vaan-kit",
       "state" : {
-        "branch" : "main",
-        "revision" : "7ce8566250902a27243b1c51b64f3cad2870ae4a"
+        "revision" : "082853d0cb40633ae5891276fb6aa74640ef17ab",
+        "version" : "1.0.0"
       }
     }
   ],
