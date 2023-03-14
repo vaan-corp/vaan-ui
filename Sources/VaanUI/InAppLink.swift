@@ -8,6 +8,7 @@
 import SwiftUI
 import WebKit
 
+#if canImport(UIKit)
 @available(iOS 16.0, *)
 public struct InAppLink: View {
   let url: URL
@@ -35,13 +36,13 @@ public struct InAppLink: View {
 }
 
 @available(iOS 16.0, *)
-private struct WebPage: View {
+public struct WebPage: View {
   let url: URL
   let title: String
 
   @Environment(\.dismiss) var dismiss
 
-  var body: some View {
+  public var body: some View {
     NavigationStack {
       WebView(url: url)
         .navigationTitle(Text(title))
@@ -76,3 +77,4 @@ struct SwiftUIView_Previews: PreviewProvider {
     InAppLink(url: URL(string: "vaancorp.com")!, title: "Home", accentColor: .red)
   }
 }
+#endif
