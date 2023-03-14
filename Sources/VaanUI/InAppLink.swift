@@ -42,6 +42,11 @@ public struct WebPage: View {
 
   @Environment(\.dismiss) var dismiss
 
+  public init(url: URL, title: String) {
+    self.url = url
+    self.title = title
+  }
+
   public var body: some View {
     NavigationStack {
       WebView(url: url)
