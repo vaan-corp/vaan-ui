@@ -8,10 +8,20 @@
 import SwiftUI
 
 /// SwiftUI Button which can perform async tasks and can show loader, disable it self while the task is being peformed.
-public struct AsyncButton<Label: View>: View {
+public struct AsyncButton<Content: View>: View {
   var action: () async -> Void
   var actionOptions = Set(ActionOption.allCases)
-  @ViewBuilder var label: () -> Label
+  @ViewBuilder var label: () -> Content
+
+  public init(
+    action: @escaping () async -> Void,
+    actionOptions: Set<ActionOption> = Set(ActionOption.allCases),
+    label: @escaping () -> Content
+  ) {
+    self.action = action
+    self.actionOptions = actionOptions
+    self.label = label
+  }
 
   @State private var isDisabled = false
   @State private var showProgressView = false
@@ -61,7 +71,7 @@ public extension AsyncButton {
   }
 }
 
-public extension AsyncButton where Label == Text {
+public extension AsyncButton where Content == Text {
   init(_ label: String,
        actionOptions: Set<ActionOption> = Set(ActionOption.allCases),
        action: @escaping () async -> Void) {
@@ -71,12 +81,22 @@ public extension AsyncButton where Label == Text {
   }
 }
 
-public extension AsyncButton where Label == Image {
+public extension AsyncButton where Content == Image {
   init(systemImageName: String,
        actionOptions: Set<ActionOption> = Set(ActionOption.allCases),
        action: @escaping () async -> Void) {
     self.init(action: action) {
       Image(systemName: systemImageName)
+    }
+  }
+}
+
+public extension AsyncButton where Content == Label<Text, Image> {
+  init(label: Label<Text, Image>,
+       actionOptions: Set<ActionOption> = Set(ActionOption.allCases),
+       action: @escaping () async -> Void) {
+    self.init(action: action) {
+      label
     }
   }
 }
