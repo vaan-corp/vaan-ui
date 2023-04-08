@@ -6,6 +6,8 @@ import SwiftUI
 
 @available(iOS 16.0, macOS 13.0, *)
 public struct InfoButtonStyle: ButtonStyle {
+  public init() {}
+
   public func makeBody(configuration: Configuration) -> some View {
     configuration.label
       .font(.footnote)

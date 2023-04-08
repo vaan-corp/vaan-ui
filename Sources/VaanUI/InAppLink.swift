@@ -14,11 +14,13 @@ public struct InAppLink: View {
   let url: URL
   let title: String
   let accentColor: Color
+  let additionalAction: () -> Void
 
-  public init(url: URL, title: String, accentColor: Color) {
+  public init(url: URL, title: String, accentColor: Color, additionalAction: @escaping () -> Void = {}) {
     self.url = url
     self.title = title
     self.accentColor = accentColor
+    self.additionalAction = additionalAction
   }
 
   @State var showWebPage = false
@@ -26,6 +28,7 @@ public struct InAppLink: View {
   public var body: some View {
     Button(title) {
       showWebPage = true
+      additionalAction()
     }
     .buttonStyle(InfoButtonStyle())
     .sheet(isPresented: $showWebPage) {
